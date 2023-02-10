@@ -16,7 +16,7 @@ use OpenAI\Laravel\Facades\OpenAI;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('story');
 });
 
 Route::get('about-php', function () {
