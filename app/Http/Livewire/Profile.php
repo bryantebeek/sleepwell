@@ -24,10 +24,8 @@ class Profile extends Component implements Forms\Contracts\HasForms
 
     public function mount(): void
     {
-        $this->form->fill([
-            //'name' => $this->post->title,
-            //'content' => $this->post->content,
-        ]);
+        $user = auth()->user();
+        $this->form->fill($user->profile);
     }
 
     public function render(): View
@@ -42,17 +40,19 @@ class Profile extends Component implements Forms\Contracts\HasForms
 
     public function submit()
     {
+        $user          = auth()->user();
         $validatedData = $this->validate();
-        dd($validatedData);
+        $user->profile = $validatedData;
+        $user->save();
     }
 
     protected function getFormSchema(): array
     {
         return [
             Forms\Components\TextInput::make('name')->required(),
-            Forms\Components\TextInput::make('age')->required()->numeric(),
-            Forms\Components\TextInput::make('gender')->required(),
-            //Forms\Components\Select::make('gender')->required()
+            Forms\Components\TextInput::make('age')->numeric(),
+            Forms\Components\TextInput::make('gender'),
+            //Forms\Components\Select::make('gender')
             //    ->options([
             //        'male' => 'Male',
             //        'female' => 'female'
@@ -65,26 +65,26 @@ class Profile extends Component implements Forms\Contracts\HasForms
                             'dad'    => 'Dad',
                             'sister' => 'Sister',
                         ])
-                        ->required(),
-                    Forms\Components\TextInput::make('name')->required(),
+                        ,
+                    Forms\Components\TextInput::make('name'),
                 ])
                 ->columns(2),
             Forms\Components\Repeater::make('pets')
                 ->schema([
-                    Forms\Components\TextInput::make('animal')->required(),
-                    Forms\Components\TextInput::make('name')->required(),
+                    Forms\Components\TextInput::make('animal'),
+                    Forms\Components\TextInput::make('name'),
 
                 ])
                 ->columns(2),
             Forms\Components\Repeater::make('stuffed-animals')
                 ->schema([
-                    Forms\Components\TextInput::make('animal')->required(),
-                    Forms\Components\TextInput::make('name')->required(),
+                    Forms\Components\TextInput::make('animal'),
+                    Forms\Components\TextInput::make('name'),
 
                 ])
                 ->columns(2),
             Forms\Components\TagsInput::make('character-traits'),
-            Forms\Components\TextInput::make('fandom')->required(),
+            Forms\Components\TextInput::make('fandom'),
         ];
     }
 
