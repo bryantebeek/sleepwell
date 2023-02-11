@@ -1,0 +1,44 @@
+@import '../../vendor/filament/forms/dist/module.esm.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.story {
+    display: grid;
+    grid-auto-flow: column;
+    height: calc(100vh - 64px);
+
+    .sidebar {
+        display: grid;
+        align-content: space-between;
+        width: 400px;
+        padding: 16px;
+
+        .content {
+            display: grid;
+            grid-auto-flow: row;
+            row-gap: 16px;
+
+            p {
+                font-family: 'Inter', sans-serif;
+                font-size: 14px;
+                line-height: 18px;
+            }
+        }
+
+        .footer {
+            .buttons {
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+    }
+
+    .image {
+        img {
+            object-fit: cover;
+            height: 100%;
+        }
+    }
+}
