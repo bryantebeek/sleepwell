@@ -77,6 +77,11 @@ class StoryViewer extends Component
         $this->step -= 1;
     }
 
+    public function finish()
+    {
+        $this->redirect(route('dashboard'));
+    }
+
     public function render()
     {
         return view('livewire.story-viewer')

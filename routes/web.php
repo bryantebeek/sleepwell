@@ -18,7 +18,7 @@ use OpenAI\Laravel\Facades\OpenAI;
 */
 
 Route::get('/', function () {
-    return view('story');
+    return view('story')->with('showNavigation', false);
 })->middleware('auth')->name('story');
 
 Route::get('about-php', function () {
