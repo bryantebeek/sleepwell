@@ -93,11 +93,11 @@ class Profile extends Component implements Forms\Contracts\HasForms
                     ->schema([
                         Forms\Components\TextInput::make('family1')
                             ->label('Tell us about a family member')
-                            ->helperText('For example: Mom Elie')
+                            ->helperText('For example: mom Elie')
                             ->required(),
                         Forms\Components\TextInput::make('family2')
-                            ->label('Tell us about another family member')
-                            ->helperText('For example: Brother Luke'),
+                            ->label('Is there another person we should know about?')
+                            ->helperText('For example: brother Luke / niece Sophia'),
                     ]),
                 Forms\Components\Wizard\Step::make('animal')
                     ->label('Stuffed-animal/Pet')
