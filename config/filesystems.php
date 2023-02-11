@@ -32,14 +32,20 @@ return [
 
         'local' => [
             'driver' => 'local',
-            'root' => storage_path('app'),
-            'throw' => false,
+            'root'   => storage_path('app'),
+            'throw'  => false,
+        ],
+
+        'prompts' => [
+            'driver' => 'local',
+            'root'   => resource_path('views/prompts'),
+            'throw'  => false,
         ],
 
         'public' => [
-            'driver' => 'local',
-            'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'driver'     => 'local',
+            'root'       => storage_path('app/public'),
+            'url'        => env('APP_URL') . '/storage',
             'visibility' => 'public',
             'throw' => false,
         ],

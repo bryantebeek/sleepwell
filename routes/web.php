@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 use OpenAI\Laravel\Facades\OpenAI;
 
@@ -26,7 +28,14 @@ Route::get('about-php', function () {
     ]);
     dd($result);
 });
+Route::get('all-prompts', function () {
+    $prompts    = Cache::get('prompts');
+    $promptName = rtrim(Arr::random($prompts), ".blade.php");
+    $this->user = auth()->user();
 
+    $prompt = view('prompts.' . $promptName, $this->user->profile)->render();
+    dd($prompt);
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');

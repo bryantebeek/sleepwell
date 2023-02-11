@@ -4,23 +4,12 @@ namespace App\Http\Livewire;
 
 use Filament\Forms;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\HtmlString;
 use Livewire\Component;
 
 class Profile extends Component implements Forms\Contracts\HasForms
 {
     use Forms\Concerns\InteractsWithForms;
-
-    public $name;
-    public $age;
-    public $gender;
-    //public $family;
-    //public $pets;
-    //public $character;
-    protected $rules = [
-        'name'   => 'required|min:3',
-        'age'    => 'required|numeric|min:2|max:20',
-        'gender' => 'required',
-    ];
 
     public function mount(): void
     {
@@ -49,42 +38,81 @@ class Profile extends Component implements Forms\Contracts\HasForms
     protected function getFormSchema(): array
     {
         return [
-            Forms\Components\TextInput::make('name')->required(),
-            Forms\Components\TextInput::make('age')->numeric(),
-            Forms\Components\TextInput::make('gender'),
-            //Forms\Components\Select::make('gender')
-            //    ->options([
-            //        'male' => 'Male',
-            //        'female' => 'female'
-            //    ]),
-            Forms\Components\Repeater::make('family')
-                ->schema([
-                    Forms\Components\Select::make('role')
-                        ->options([
-                            'mom'    => 'Mom',
-                            'dad'    => 'Dad',
-                            'sister' => 'Sister',
-                        ])
-                        ,
-                    Forms\Components\TextInput::make('name'),
-                ])
-                ->columns(2),
-            Forms\Components\Repeater::make('pets')
-                ->schema([
-                    Forms\Components\TextInput::make('animal'),
-                    Forms\Components\TextInput::make('name'),
 
-                ])
-                ->columns(2),
-            Forms\Components\Repeater::make('stuffed-animals')
-                ->schema([
-                    Forms\Components\TextInput::make('animal'),
-                    Forms\Components\TextInput::make('name'),
-
-                ])
-                ->columns(2),
-            Forms\Components\TagsInput::make('character-traits'),
-            Forms\Components\TextInput::make('fandom'),
+            Forms\Components\Wizard::make([
+                Forms\Components\Wizard\Step::make('name')
+                    ->schema([
+                        Forms\Components\TextInput::make('name')
+                            ->required(),
+                    ]),
+                Forms\Components\Wizard\Step::make('age')
+                    ->schema([
+                        Forms\Components\TextInput::make('age')
+                            ->numeric()
+                            ->required(),
+                    ]),
+                Forms\Components\Wizard\Step::make('gender')
+                    ->schema([
+                        Forms\Components\Card::make(),
+                        Forms\Components\TextInput::make('gender')
+                            ->required(),
+                    ]),
+                Forms\Components\Wizard\Step::make('family')
+                    ->description('Describe two of your family members, do not forget about grandma!')
+                    ->schema([
+                        Forms\Components\TextInput::make('family1')
+                            ->label('Family member')
+                            ->helperText('For example: Mom Elie')
+                            ->required(),
+                        Forms\Components\TextInput::make('family2')
+                            ->label('Family member')
+                            ->label('Stuffed-animal or pet')
+                            ->helperText('For example: Brother Luke')
+                            ->required(),
+                    ]),
+                Forms\Components\Wizard\Step::make('animal')
+                    ->label('Stuffed-animal/Pet')
+                    ->schema([
+                        Forms\Components\TextInput::make('animal1')
+                            ->label('Stuffed-animal or pet')
+                            ->helperText('For example: Rabbit Bobby')
+                            ->required(),
+                        Forms\Components\TextInput::make('animal2')
+                            ->label('Stuffed-animal or pet')
+                            ->helperText('For example: Dog Brunno')
+                            ->required(),
+                    ]),
+            ])
+                ->skippable()
+                ->submitAction(new HtmlString('<button type="submit" class="filament-button filament-button-size-sm">Get me a story</button>')),
+            //Forms\Components\Repeater::make('family')
+            //    ->schema([
+            //        Forms\Components\Select::make('role')
+            //            ->options([
+            //                'mom'    => 'Mom',
+            //                'dad'    => 'Dad',
+            //                'sister' => 'Sister',
+            //            ])
+            //            ,
+            //        Forms\Components\TextInput::make('name'),
+            //    ])
+            //    ->columns(2),
+            //Forms\Components\Repeater::make('pets')
+            //    ->schema([
+            //        Forms\Components\TextInput::make('animal'),
+            //        Forms\Components\TextInput::make('name'),
+            //
+            //    ])
+            //    ->columns(2),
+            //Forms\Components\Repeater::make('stuffed-animals')
+            //    ->schema([
+            //        Forms\Components\TextInput::make('animal'),
+            //        Forms\Components\TextInput::make('name'),
+            //
+            //    ])
+            //    ->columns(2),
+            //Forms\Components\TagsInput::make('character-traits'),
+            //Forms\Components\TextInput::make('fandom'),
         ];
     }
 
