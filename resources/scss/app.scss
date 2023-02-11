@@ -28,16 +28,19 @@ ol[role="list"] {
     padding: 1rem;
 
     .story-inner-wrapper {
-        max-width: 1148px;
-        max-height: 796px;
-        width: 100vw;
-        height: 100vh;
-        display: grid;
         padding: 1rem;
+        max-width: 400px;
+        margin: 0 auto;
 
         @include media-query('tablet') {
+            max-height: 796px;
+            width: 100vw;
+            height: 100vh;
+            display: grid;
             grid-template-columns: 1fr 2fr;
-        }
+            max-width: 1148px;
+            margin: none;
+     }
     }
 
     .sidebar {
@@ -93,11 +96,8 @@ ol[role="list"] {
         order: 0;
         aspect-ratio: 1;
 
-        max-width: 400px;
-
         @include media-query('tablet') {
             order: 1;
-            max-width: none;
         }
 
         .loader {
