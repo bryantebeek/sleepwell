@@ -25,11 +25,12 @@ class GenerateStory
         ];
         $prompt         = $options['prompt'] ?? view('prompts.' . $promptTemplate, $variables)->render();
         $story          = $options['story'] ?? $this->getStory($prompt);
-        //dd($variables, $prompt, $story);
-        $paragraphs = isset($options['paragraphs']) ?? $this->extractParagraphs($story);
+
+        $paragraphs = $options['paragraphs'] ?? $this->extractParagraphs($story);
+
         $storyBeats = $this->makeBeats($paragraphs);
         //$this->getImages();
-
+        dd($variables, $prompt, $story,$paragraphs,$storyBeats);
         $this->story         = new Story();
         $this->story->prompt = $prompt;
         $this->story->beats  = $storyBeats;
