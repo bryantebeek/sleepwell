@@ -34,17 +34,20 @@ class GenerateStory
             $summaryPrompt  = $this->getStorySummaryPrompt($formattedStory);
             $summary        = $options['summary'] ?? $this->getStorySummary($summaryPrompt);
             if (config('openai.generate_beat_summary')) {
+                $thumbnail = null;
                 foreach ($storyBeats as $key => $storyBeat) {
                     $storyBeat->summary_prompt = $this->getParagraphDescriptionsPrompt($storyBeat->paragraph);
                     $storyBeat->summary        = $this->getParagraphDescriptions($storyBeat->summary_prompt);
 
                     if (config('openai.generate_images')) {
                         $storyBeat->image = $this->getImage($summary . ' ' . $storyBeat->summary . ' picture book style with soft colours');
+                        $thumbnail        = $thumbnail ?? $storyBeat->image;
                     }
                 }
             }
         }
         $this->story                 = new Story();
+        $this->story->thumbnail      = $thumbnail ?? '';
         $this->story->summary        = $summary ?? '';
         $this->story->summary_prompt = $summaryPrompt ?? '';
         $this->story->variables      = $variables;
