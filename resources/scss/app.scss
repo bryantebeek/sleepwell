@@ -4,10 +4,20 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+    min-height: 100vh;
+    /* mobile viewport bug fix */
+    min-height: -webkit-fill-available;
+}
+
+html {
+    height: -webkit-fill-available;
+}
+
 .story {
     display: grid;
     grid-template-columns: 400px 1fr;
-    height: 100vh;
+    height: 100%;
     background-color: #fff9f1;
 
     .sidebar {
