@@ -8,6 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
         <title>Sleepwell</title>
+        <meta name="description" content="Generate personalized bedtime stories for your children using AI.">
 
         <style>[x-cloak] { display: none !important; }</style>
         @vite(['resources/scss/app.scss', 'resources/js/app.js'])
