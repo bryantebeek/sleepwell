@@ -7,6 +7,7 @@ use App\Models\Story;
 use App\Models\User;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Storage;
 use OpenAI\Laravel\Facades\OpenAI;
 
 class GenerateStory
@@ -48,7 +49,11 @@ class GenerateStory
 
                     if (config('openai.generate_images')) {
                         $storyBeat->image = $this->getImage($summary . ' ' . $storyBeat->summary . ' picture book style with soft colours');
-                        $thumbnail        = $thumbnail ?? $storyBeat->image;
+                        $filename         = $this->story->id . '_' . $key;
+                        Storage::disk('public')->put('images/' . $filename . '.png', file_get_contents($storyBeat->image));
+                        $storyBeat->image = Storage::disk('public')->url('images/' . $filename . '.png');
+                        //dd($storyBeat->image);
+                        $thumbnail = $thumbnail ?? $storyBeat->image;
                     }
                 }
             }

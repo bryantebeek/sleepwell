@@ -62,10 +62,12 @@ class Profile extends Component implements Forms\Contracts\HasForms
                         Forms\Components\Radio::make('pronoun')
                             ->label('How should we call you?')
                             ->options(['she' => 'she', 'he' => 'he'])
+                            ->inline()
                             ->required(),
                         Forms\Components\Radio::make('age')
                             ->label('How old are you?')
                             ->options(array_combine(range(1, 6), range(1, 6)))
+                            ->inline()
                             ->required(),
                     ]),
                 Forms\Components\Wizard\Step::make('family')
