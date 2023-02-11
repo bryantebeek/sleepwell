@@ -14,5 +14,6 @@ return [
 
     'api_key' => env('OPENAI_API_KEY'),
     'organization' => env('OPENAI_ORGANIZATION'),
+    'image_size' => env('GPT_IMAGE_SIZE', '256x256'),
 
 ];
