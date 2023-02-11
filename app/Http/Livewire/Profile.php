@@ -5,7 +5,6 @@ namespace App\Http\Livewire;
 use App\Models\Story;
 use Filament\Forms;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\HtmlString;
 use Illuminate\Support\Str;
 use Livewire\Component;
 
@@ -36,18 +35,19 @@ class Profile extends Component implements Forms\Contracts\HasForms
 
         $validatedData = $this->validate();
 
-        $pronoun = trim(Str::lower($validatedData['pronoun'] ?? 'he'));
+        $pronoun                  = trim(Str::lower($validatedData['pronoun'] ?? 'he'));
         $validatedData['boyGirl'] = $pronoun === 'he' ? 'boy' : 'girl';
-        $validatedData['hisHer'] = $pronoun === 'he' ? 'his' : 'her';
+        $validatedData['hisHer']  = $pronoun === 'he' ? 'his' : 'her';
 
         $user->profile = $validatedData;
         $user->save();
 
-        $this->story                 = new Story();
-
-        //new \App\Services\GenerateStory($user, []);
-
-        $this->redirect(route('stories.index'));
+        $story = new Story();
+        $story->user()->associate($user);
+        $story->beats  = [];
+        $story->prompt = '';
+        $story->save();
+        $this->redirect(route('stories.view', $story));
     }
 
     protected function getFormSchema(): array

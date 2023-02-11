@@ -14,9 +14,10 @@ class GenerateStory
     public $story;
     public $user;
 
-    function __construct(User $user, array $options)
+    function __construct(Story $storyInput, User $user, array $options)
     {
         $this->user     = $user;
+        $this->story    = $storyInput;
         $promptTemplate = $options['promptTemplate'] ?? $this->getRandomStoryPrompt();
         $variables      = [
             ...$this->user->profile,
@@ -52,7 +53,6 @@ class GenerateStory
                 }
             }
         }
-        $this->story                 = new Story();
         $this->story->thumbnail      = $thumbnail ?? '';
         $this->story->summary        = $summary ?? '';
         $this->story->summary_prompt = $summaryPrompt ?? '';

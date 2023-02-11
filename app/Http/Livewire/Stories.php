@@ -27,9 +27,12 @@ class Stories extends Component
             return;
         }
 
-        new \App\Services\GenerateStory($user, []);
-
-        $this->redirect(route('stories.index'));
+        $story = new Story();
+        $story->user()->associate(Auth::user());
+        $story->beats  = [];
+        $story->prompt = '';
+        $story->save();
+        $this->redirect(route('stories.view', $story));
     }
 
     public function render()

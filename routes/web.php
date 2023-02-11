@@ -27,6 +27,10 @@ Route::get('/stories', function () {
 })->middleware('auth')->name('stories.index');
 
 Route::get('/stories/{story}', function (Story $story) {
+
+
+
+
     return view('story')
         ->with('story', $story)
         ->with('showNavigation', false);
