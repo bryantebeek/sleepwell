@@ -65,9 +65,7 @@ class Profile extends Component implements Forms\Contracts\HasForms
             ],
         ]);
 
-        sleep(3);
-
-//        $this->redirect(route('stories.index'));
+        $this->redirect(route('stories.index'));
     }
 
     protected function getFormSchema(): array
@@ -105,10 +103,10 @@ class Profile extends Component implements Forms\Contracts\HasForms
                 Forms\Components\Wizard\Step::make('animal')
                     ->label('Stuffed-animal/Pet')
                     ->schema([
-                        Forms\Components\TextInput::make('animal1')
+                        Forms\Components\TextInput::make('companion1')
                             ->label('Stuffed-animal')
                             ->helperText('For example: stuffed rabbit Bobby / stuffed toy Charlie'),
-                        Forms\Components\TextInput::make('animal2')
+                        Forms\Components\TextInput::make('companion2')
                             ->label('Pet')
                             ->helperText('For example: dog Brunno / cat Simba'),
                     ]),
