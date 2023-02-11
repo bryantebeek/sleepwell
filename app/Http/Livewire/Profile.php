@@ -15,6 +15,7 @@ class Profile extends Component implements Forms\Contracts\HasForms
     public function mount(): void
     {
         $user = auth()->user();
+
         $this->form->fill($user->profile);
     }
 
@@ -26,12 +27,6 @@ class Profile extends Component implements Forms\Contracts\HasForms
     public function updated($propertyName)
     {
         $this->validateOnly($propertyName);
-    }
-
-
-    private function isBoyOrGirl($pronoun)
-    {
-        return trim(Str::lower($pronoun ?? 'he')) === 'he' ? 'boy' : 'girl';
     }
 
     public function submit()
@@ -105,52 +100,20 @@ class Profile extends Component implements Forms\Contracts\HasForms
                             ->required(),
                         Forms\Components\TextInput::make('family2')
                             ->label('Family member')
-                            ->label('Stuffed-animal or pet')
-                            ->helperText('For example: Brother Luke')
-                            ->required(),
+                            ->helperText('For example: Brother Luke'),
                     ]),
                 Forms\Components\Wizard\Step::make('animal')
                     ->label('Stuffed-animal/Pet')
                     ->schema([
                         Forms\Components\TextInput::make('animal1')
-                            ->label('Stuffed-animal or pet')
-                            ->helperText('For example: Rabbit Bobby')
-                            ->required(),
+                            ->label('Stuffed-animal')
+                            ->helperText('For example: stuffed rabbit Bobby / stuffed toy Charlie'),
                         Forms\Components\TextInput::make('animal2')
-                            ->label('Stuffed-animal or pet')
-                            ->helperText('For example: Dog Brunno')
-                            ->required(),
+                            ->label('Pet')
+                            ->helperText('For example: dog Brunno / cat Simba'),
                     ]),
             ])
                 ->submitAction(view('profile.submit_button')),
-            //Forms\Components\Repeater::make('family')
-            //    ->schema([
-            //        Forms\Components\Select::make('role')
-            //            ->options([
-            //                'mom'    => 'Mom',
-            //                'dad'    => 'Dad',
-            //                'sister' => 'Sister',
-            //            ])
-            //            ,
-            //        Forms\Components\TextInput::make('name'),
-            //    ])
-            //    ->columns(2),
-            //Forms\Components\Repeater::make('pets')
-            //    ->schema([
-            //        Forms\Components\TextInput::make('animal'),
-            //        Forms\Components\TextInput::make('name'),
-            //
-            //    ])
-            //    ->columns(2),
-            //Forms\Components\Repeater::make('stuffed-animals')
-            //    ->schema([
-            //        Forms\Components\TextInput::make('animal'),
-            //        Forms\Components\TextInput::make('name'),
-            //
-            //    ])
-            //    ->columns(2),
-            //Forms\Components\TagsInput::make('character-traits'),
-            //Forms\Components\TextInput::make('fandom'),
         ];
     }
 
