@@ -1,7 +1,8 @@
 <div class="story">
   <div class="story-inner-wrapper">
-    <div wire:loading>
-      Loading data...
+    <div class="story-loader text-purple-700">
+        @include('partials.loader')
+        <span>Generating your personalized story</span>
     </div>
     <script>
       document.addEventListener('DOMContentLoaded', () => {

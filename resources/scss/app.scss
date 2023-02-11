@@ -7,8 +7,8 @@
 @import './layout.scss';
 
 * {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -41,6 +41,35 @@ ol[role="list"] {
             max-width: 1148px;
             margin: none;
      }
+    }
+
+    &-loader {
+        display: grid;
+        align-items: center;
+        align-content: space-around;
+        justify-content: center;
+        justify-items: center;
+        font-family: 'Comfortaa', sans-serif;
+        font-size: 16px;
+        text-align: center;
+        row-gap: spacing(4);
+        padding: spacing(4);
+
+        svg {
+            width: 100px;
+            height: 100px;
+            fill: rgb(126 34 206);
+
+            @include media-query('tablet') {
+                width: 200px;
+                height: 200px;
+            }
+        }
+
+        @include media-query('tablet') {
+            height: 50vh;
+            font-size: 22px;
+        }
     }
 
     .sidebar {
