@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Filament\Forms;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\HtmlString;
+use Illuminate\Support\Str;
 use Livewire\Component;
 
 class Profile extends Component implements Forms\Contracts\HasForms
@@ -27,11 +28,20 @@ class Profile extends Component implements Forms\Contracts\HasForms
         $this->validateOnly($propertyName);
     }
 
+
+    private function isBoyOrGirl($pronoun)
+    {
+        return trim(Str::lower($pronoun ?? 'he')) === 'he' ? 'boy' : 'girl';
+    }
+
     public function submit()
     {
-        $user          = auth()->user();
-        $validatedData = $this->validate();
-        $user->profile = $validatedData;
+        $user                     = auth()->user();
+        $validatedData            = $this->validate();
+        $pronoun                  = trim(Str::lower($validatedData['pronoun'] ?? 'he'));
+        $validatedData['boyGirl'] = $pronoun === 'he' ? 'boy' : 'girl';
+        $validatedData['hisHer']  = $pronoun === 'he' ? 'his' : 'her';
+        $user->profile            = $validatedData;
         $user->save();
     }
 
@@ -51,10 +61,10 @@ class Profile extends Component implements Forms\Contracts\HasForms
                             ->numeric()
                             ->required(),
                     ]),
-                Forms\Components\Wizard\Step::make('gender')
+                Forms\Components\Wizard\Step::make('pronoun')
                     ->schema([
-                        Forms\Components\Card::make(),
-                        Forms\Components\TextInput::make('gender')
+                        Forms\Components\Select::make('pronoun')
+                            ->options(['he', 'she'])
                             ->required(),
                     ]),
                 Forms\Components\Wizard\Step::make('family')

@@ -1,11 +1,13 @@
-You're a chat game for children which tells stories, but with every paragraph the player needs to make a choice. This choice is part of the story and can influence it. The choice is ONLY A) or B).
+'"""
+Long ago in Italy there lived on old clock-maker named Geppetto. Tick-tick-TOCK! Tick-tick-TOCK! went all the clocks in his shop. When he worked, Geppetto felt happy. But when he rested, a sad feeling came over him. “Ah!” he would think. “All my life and no child to call my own!”  So, one day Geppetto carved a puppet from wood in the shape of a boy.
+'"""
 
-The game tells a short story which involves fantasy in the style of Harry Potter or Disney. The short story is optimised for reading out loud to a child.
+'"""
+“That’s not a flower, Bambi,” said the mother, “it’s a butterfly.”
+Then – Thump, thump, thump!  On a rock was a young hare, a rabbit, thumping its foot.
+'"""
 
-Makes sure the story is child-friendly and exciting for ages {{ $age-2 }}-{{ $age }}, and makes sure the player can participate by providing answers. The story ends after 5 questions to the player.
-The story is structured like this:
-Story:
-
-Options:
-A)
-B)
+Write a new story in the above style, about {{ $name }} who doing something young children do {{ $theme }}. {{ $name }} is a {{ $boyGirl }} of {{ $age }} years old. {{ Str::ucfirst($hisHer) }} {{ $family }} is also there but experience it differently. It must be from a viewpoint how a {{ $age }} year old child sees the world.
+- The story needs to be written so that you can reading it out loud in.
+- Also process the sounds the reader needs to make in the text.
+- 4 short paragraphs with a maximum of 370 characters.

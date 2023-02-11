@@ -13,8 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->json('profile')->nullable();
+        Schema::create('stories', function (Blueprint $table) {
+            $table->id();
+            $table->foreignIdFor(\App\Models\User::class);
+            $table->json('beats');
+            $table->string('thumbnail')->nullable();
+            $table->text('prompt');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('stories');
     }
 };
