@@ -1,3 +1,3 @@
 <x-app-layout>
-    <livewire:story-viewer />
+    <livewire:story-viewer :story="$story" />
 </x-app-layout>

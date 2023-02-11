@@ -2,11 +2,19 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Story;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Stories extends Component
 {
+    public array $stories;
+
+    public function mount()
+    {
+        $this->stories = Auth::check() ? Auth::user()->stories->all() : Story::all()->all();
+    }
+
     public function new()
     {
         Auth::user()->stories()->create([

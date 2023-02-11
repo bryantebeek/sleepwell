@@ -22,11 +22,11 @@
                 </div>
 
                 <div class="pagination text-center">
-                    Page {{ $step + 1 }} of {{ count($beats) }}
+                    Page {{ $step + 1 }} of {{ count($story->beats) }}
                 </div>
 
                 <div class="text-end">
-                    @if ($step < count($beats) - 1)
+                    @if ($step < count($story->beats) - 1)
                         <button
                             class="inline-block px-6 py-2.5 bg-purple-200 text-purple-900 font-medium text-xs leading-tight rounded hover:bg-purple-300 active:bg-purple-300 focus:bg-purple-300 focus:outline-none transition duration-150 ease-in-out"
                             wire:click="next"
@@ -35,7 +35,7 @@
                         </button>
                     @endif
 
-                    @if ($step === count($beats) - 1)
+                    @if ($step === count($story->beats) - 1)
                         <button
                             class="inline-block px-6 py-2.5 bg-purple-200 text-purple-900 font-medium text-xs leading-tight rounded hover:bg-purple-300 active:bg-purple-300 focus:bg-purple-300 focus:outline-none transition duration-150 ease-in-out"
                             wire:click="finish">

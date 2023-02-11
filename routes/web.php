@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Models\Story;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
@@ -19,11 +20,17 @@ use OpenAI\Laravel\Facades\OpenAI;
 
 Route::get('/', function () {
     return view('stories');
+})->name('welcome');
+
+Route::get('/stories', function () {
+    return view('stories');
 })->middleware('auth')->name('stories.index');
 
-Route::get('/stories/{story}', function () {
-    return view('story')->with('showNavigation', false);
-})->middleware('auth')->name('stories.view');
+Route::get('/stories/{story}', function (Story $story) {
+    return view('story')
+        ->with('story', $story)
+        ->with('showNavigation', false);
+})->name('stories.view');
 
 Route::get('about-php', function () {
     $result = OpenAI::completions()->create([
