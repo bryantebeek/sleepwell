@@ -79,7 +79,7 @@ class Profile extends Component implements Forms\Contracts\HasForms
                         Forms\Components\TextInput::make('name')
                             ->label('What is your name?')
                             ->required(),
-                        Forms\Components\Select::make('pronoun')
+                        Forms\Components\Radio::make('pronoun')
                             ->label('How should we call you?')
                             ->options(['she' => 'she', 'he' => 'he'])
                             ->required(),
@@ -92,11 +92,11 @@ class Profile extends Component implements Forms\Contracts\HasForms
                     ->description('Tell us about two of your family members, do not forget about grandma!')
                     ->schema([
                         Forms\Components\TextInput::make('family1')
-                            ->label('Family member')
+                            ->label('Tell us about a family member')
                             ->helperText('For example: Mom Elie')
                             ->required(),
                         Forms\Components\TextInput::make('family2')
-                            ->label('Family member')
+                            ->label('Tell us about another family member')
                             ->helperText('For example: Brother Luke'),
                     ]),
                 Forms\Components\Wizard\Step::make('animal')
