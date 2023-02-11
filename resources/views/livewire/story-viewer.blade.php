@@ -53,7 +53,7 @@
             @include('partials.loader')
         </div>
 
-        <img class="overlay" src="https://uc01fedb6bc2936a1cddc8977b17.previews.dropboxusercontent.com/p/thumb/ABymM1xsxO9wVS2jejMaIoLmiQ3wUdnsVjYVveURchfAWHgTQ3fFJWuXFa60Xa1akYv6xs0kZpYUJkj-GFsrNgzDpsooVSsifke1p3ZiuUpgUJdOflX7f2uBTsO-vMBn4LyUsSwsu8BO9pWMqhrC-AC8VaISbwC482EYiROdD_myy4hYEZv0wVh_ujbX-MMLbW0DmhlPH43DlYKVxpvegTv0ymZdxuAftTT9W2jjSffx6NVTG0LkmCNanDEiy6SrxLwm-BL8wZuih8LWm5AficA-M3Ik9PjdWldRNoc8EA6rbfbVBXAWreyzBoo8rIeWAcEDfU4EGgIS623Qz-37kYBeiP_GiNHR--R1Um2RRB311heJ1MxrXK0RlbmUwjE9D24/p.png" />
+        <img class="overlay" src="/images/overlay.png" />
 
         <img src="{{ $currentBeat['image'] }}"
              class="transition duration-150 ease-in-out"
