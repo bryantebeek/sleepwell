@@ -23,12 +23,12 @@ class Story extends Model
     /**
      * The attributes that should be cast.
      *
-     * @var array
+     * @var array<string, string>
      */
     protected $casts = [
-        'beats' => 'array'
+        'beats' => 'array',
+        'variables' => 'json',
     ];
-
     public function user()
     {
         return $this->belongsTo(User::class);

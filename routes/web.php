@@ -53,16 +53,18 @@ Route::get('generate-story', function () {
     $storyGenerator = new \App\Services\GenerateStory(
         auth()->user(),
         [
-            'story'=>'The train ride was long and tiring, but the excitement of James and his brother Luke was palpable. James couldn’t wait to explore the new world outside the window. Click-clack, click-clack, went the wheels of the train. He stuck his head out and felt the wind on his face. “Weeeee!” he shouted. His brother Luke just smiled and shook his head.
-
-James couldn’t help but want to join the birds who were flying by. He jumped up and down and waved his arms wildly, hoping to take off. Luke smiled and just watched.
-
-James noticed a few passengers looking out at him, but he didn’t care. He was lost in his own world. He made funny faces, blew raspberries, and pretended to be a superhero. Luke laughed and started to join in on the fun.
-
-The train ride was full of laughter and silliness. James and Luke created a whole new world on the train, and the miles flew by in no time. Click-clack, click-clack, went the wheels of the train.'
-        ]
+//            'story'=>'The train ride was long and tiring, but the excitement of James and his brother Luke was palpable. James couldn’t wait to explore the new world outside the window. Click-clack, click-clack, went the wheels of the train. He stuck his head out and felt the wind on his face. “Weeeee!” he shouted. His brother Luke just smiled and shook his head.
+//
+//James couldn’t help but want to join the birds who were flying by. He jumped up and down and waved his arms wildly, hoping to take off. Luke smiled and just watched.
+//
+//James noticed a few passengers looking out at him, but he didn’t care. He was lost in his own world. He made funny faces, blew raspberries, and pretended to be a superhero. Luke laughed and started to join in on the fun.
+//
+//The train ride was full of laughter and silliness. James and Luke created a whole new world on the train, and the miles flew by in no time. Click-clack, click-clack, went the wheels of the train.'
+//      ,
+//            'summary'=>'Train ride, laughter, silliness, exploration.'
+    ]
     );
-    dd($storyGenerator->story);
+    dd($storyGenerator->story->toArray());
 });
 
 
