@@ -16,24 +16,22 @@ ol[role="list"] {
 
 .story {
     display: grid;
-    //height: 100%;
     background-color: #fff9f1;
 
     @include media-query('tablet') {
         grid-template-columns: 400px 1fr;
-        padding: spacing(2);
     }
 
     .sidebar {
         display: grid;
         align-content: space-between;
-        //width: 400px;
-        //padding: 32px;
         padding: 0 spacing(2) spacing(2);
         order: 1;
 
         @include media-query('tablet') {
             order: 0;
+            padding: spacing(4) spacing(2) spacing(2);
+            width: 400px;
         }
 
         .content {
@@ -71,20 +69,23 @@ ol[role="list"] {
             .pagination {
                 display: none;
                 font-size: 12px;
+
+                @include media-query('tablet') {
+                    display: block;
+                }
             }
         }
     }
 
     .image {
-        overflow: hidden;
-        margin: spacing(2);
         position: relative;
         order: 0;
-        max-height: 300px;
+        max-width: 300px;
+        margin: spacing(2) auto;
 
         @include media-query('tablet') {
             order: 1;
-            max-height: none;
+            max-width: none;
         }
 
         .loader {
@@ -104,9 +105,9 @@ ol[role="list"] {
         }
 
         img {
-            object-fit: cover;
-            height: 100%;
-            width: 100%;
+            //object-fit: cover;
+            //height: 100%;
+            //width: 100%;
         }
 
         .overlay {
