@@ -82,10 +82,9 @@ ol[role="list"] {
 
 .stories {
     display: grid;
-    grid-auto-flow: column;
-    grid-template-columns: repeat(auto-fit, 128px);
+    grid-template-columns: repeat(auto-fill, 128px);
     align-items: center;
-    column-gap: 24px;
+    gap: 24px;
 
     &-card {
         h1 {
@@ -113,4 +112,11 @@ ol[role="list"] {
             }
         }
     }
+}
+
+.alert {
+    padding: 16px;
+    margin-bottom: 24px;
+    font-family: 'Comfortaa', sans-serif;
+    border-radius: 16px;
 }

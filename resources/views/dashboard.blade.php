@@ -5,17 +5,17 @@
         </h2>
     </x-slot>
 
-    @if (session()->has('message'))
-        <div class="alert alert-success">
-            {{ session('message') }}
-        </div>
-    @endif
-
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="overflow-hidden">
                 <div class="p-6 text-gray-900">
-                    <livewire:profile />
+                    @if (session()->has('message'))
+                        <div class="alert bg-purple-700 text-white">
+                            {{ session('message') }}
+                        </div>
+                    @endif
+
+                    <livewire:profile/>
                 </div>
             </div>
         </div>
