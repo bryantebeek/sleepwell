@@ -38,6 +38,7 @@ ol[role="list"] {
             height: 100vh;
             display: grid;
             grid-template-columns: 1fr 2fr;
+            grid-gap: 2rem;
             max-width: 1148px;
             margin: none;
      }
