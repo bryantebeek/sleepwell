@@ -19,7 +19,7 @@ use OpenAI\Laravel\Facades\OpenAI;
 
 Route::get('/', function () {
     return view('story');
-});
+})->middleware('auth')->name('story');
 
 Route::get('about-php', function () {
     $result = OpenAI::completions()->create([
