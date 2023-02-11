@@ -27,8 +27,14 @@ class GenerateStory
         $prompt         = $options['prompt'] ?? view('prompts.' . $promptTemplate, $variables)->render();
         $story          = $options['story'] ?? $this->getStory($prompt);
 
+        $paragraphs = $options['paragraphs'] ?? $this->extractParagraphs($story);
+        $i          = 0;
+        while (count($paragraphs) !== 4 && $i !== 2) {
+            $story      = $options['story'] ?? $this->getStory($prompt);
+            $paragraphs = $options['paragraphs'] ?? $this->extractParagraphs($story);
+            $i++;
+        }
         if (config('openai.generate_summary')) {
-            $paragraphs     = $options['paragraphs'] ?? $this->extractParagraphs($story);
             $formattedStory = implode("\n", $paragraphs);
             $storyBeats     = $this->makeBeats($paragraphs);
             $summaryPrompt  = $this->getStorySummaryPrompt($formattedStory);
