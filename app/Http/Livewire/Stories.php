@@ -27,7 +27,9 @@ class Stories extends Component
             return;
         }
 
-        new \App\Services\GenerateStory($user, []);
+//        new \App\Services\GenerateStory($user, []);
+
+        sleep(5);
 
         $this->redirect(route('stories.index'));
     }
