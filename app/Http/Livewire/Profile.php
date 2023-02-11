@@ -103,10 +103,10 @@ class Profile extends Component implements Forms\Contracts\HasForms
                     ->label('Stuffed-animal/Pet')
                     ->schema([
                         Forms\Components\TextInput::make('companion1')
-                            ->label('Stuffed-animal')
-                            ->helperText('For example: stuffed rabbit Bobby / stuffed toy Charlie'),
+                            ->label('Describe your favorite stuffed animal')
+                            ->helperText('For example: stuffed rabbit Bobby / stuffed giraf Charlie'),
                         Forms\Components\TextInput::make('companion2')
-                            ->label('Pet')
+                            ->label('Do you have a pet?')
                             ->helperText('For example: dog Brunno / cat Simba'),
                     ]),
             ])
