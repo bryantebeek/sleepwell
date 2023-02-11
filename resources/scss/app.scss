@@ -19,7 +19,6 @@ body {
         align-content: space-between;
         width: 400px;
         padding: 32px;
-        //color: white;
 
         .content {
             display: grid;
@@ -30,15 +29,20 @@ body {
                 font-family: 'Lora', sans-serif;
                 font-size: 18px;
                 line-height: 26px;
-                //letter-spacing: -0.05em;
                 font-weight: 500;
             }
         }
 
         .footer {
             .buttons {
-                display: flex;
+                display: grid;
+                grid-template-columns: 1fr 100px 1fr;
                 justify-content: space-between;
+                align-items: center;
+            }
+
+            .pagination {
+                font-size: 12px;
             }
         }
     }
