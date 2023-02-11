@@ -50,6 +50,23 @@ body {
     .image {
         overflow: hidden;
         margin: 32px;
+        position: relative;
+
+        .loader {
+            display: none;
+            position: absolute;
+            background: rgba(0,0,0,0.5);
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+
+        &.loading {
+            .loader {
+                display: flex;
+            }
+        }
 
         img {
             object-fit: cover;
