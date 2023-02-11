@@ -1,4 +1,5 @@
 <div class="story">
+<div class="story-inner-wrapper">
     <div class="sidebar text-purple-900">
         <div class="content">
             @foreach (\Illuminate\Support\Str::of($currentBeat['paragraph'])->explode('.')->filter() as $sentence)
@@ -22,7 +23,7 @@
                 </div>
 
                 <div class="pagination text-center">
-                    Page {{ $step + 1 }} of {{ count($story->beats) }}
+                    {{ $step + 1 }} of {{ count($story->beats) }}
                 </div>
 
                 <div class="text-end">
@@ -60,4 +61,5 @@
              onload="document.getElementById('story-image').classList.remove('loading')"
         />
     </div>
+</div>
 </div>
