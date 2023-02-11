@@ -77,16 +77,19 @@ class Profile extends Component implements Forms\Contracts\HasForms
                 Forms\Components\Wizard\Step::make('name')
                     ->schema([
                         Forms\Components\TextInput::make('name')
+                            ->label('What is your name?')
                             ->required(),
                         Forms\Components\Select::make('pronoun')
-                            ->options(['he' => 'he', 'she' => 'she'])
+                            ->label('How should we call you?')
+                            ->options(['she' => 'she', 'he' => 'he'])
                             ->required(),
                         Forms\Components\Radio::make('age')
+                            ->label('How old are you?')
                             ->options(array_combine(range(1, 6), range(1, 6)))
                             ->required(),
                     ]),
                 Forms\Components\Wizard\Step::make('family')
-                    ->description('Describe two of your family members, do not forget about grandma!')
+                    ->description('Tell us about two of your family members, do not forget about grandma!')
                     ->schema([
                         Forms\Components\TextInput::make('family1')
                             ->label('Family member')
