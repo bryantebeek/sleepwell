@@ -25,7 +25,7 @@ class GenerateStory
             'family'    => $this->getFamily(),
             'companion' => $this->getCompanion()
         ];
-        $prompt         = $options['prompt'] ?? view('prompts.' . $promptTemplate, $variables)->render();
+        $prompt         = $options['prompt'] ?? view('prompts.prompt1', $variables)->render();
         $story          = $options['story'] ?? $this->getStory($prompt);
 
         $paragraphs = $options['paragraphs'] ?? $this->extractParagraphs($story);
