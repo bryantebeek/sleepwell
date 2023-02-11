@@ -78,20 +78,18 @@ class GenerateStory
     {
         return Arr::random([
             'in the train',
-            'on the beach',
-            'in the playground',
-            'in the kitchen',
-            'at an amusement park',
-            'on the bike',
-            'in the car',
-            'in the zoo',
-            'in the forest',
-            'at the park',
-            'in the city',
-            'on a farm',
-            'on holiday',
             'in space',
-            'in the supermarket'
+            'in a playground',
+            'in a kitchen',
+            'in an amusement park',
+            'in a library',
+            'in a trampoline park',
+            'in a zoo',
+            'in a museum',
+            'in a forest',
+            'in a supermarket',
+            'on the beach',
+            'on a farm',
         ]);
     }
 
@@ -107,8 +105,8 @@ class GenerateStory
         $result = OpenAI::completions()->create([
             'model'       => 'text-davinci-003',
             'prompt'      => $prompt,
-            'max_tokens'  => 2048,
-            'temperature' => 0.7,
+            'max_tokens'  => 600,
+            'temperature' => 0.8,
             'user'        => '' . $this->user->id
         ]);
 
