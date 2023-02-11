@@ -22,7 +22,7 @@
 
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-amber-50">
-            @if (! \Illuminate\Support\Facades\Route::is('story')) @include('layouts.navigation') @endif
+            @if (! \Illuminate\Support\Facades\Route::is('stories.view')) @include('layouts.navigation') @endif
 
             <main>
                 {{ $slot }}

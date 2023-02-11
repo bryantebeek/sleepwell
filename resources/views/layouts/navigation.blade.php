@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-amber-50">
+<nav x-data="{ open: false }">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -6,14 +6,14 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                        <x-application-logo class="block h-9 w-auto" />
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="flex space-x-8 ml-10 ">
-                    <x-nav-link :href="route('story')" :active="request()->routeIs('story')">
-                        Story
+                    <x-nav-link :href="route('stories.index')" :active="request()->routeIs('stories.index')">
+                        Stories
                     </x-nav-link>
 
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">

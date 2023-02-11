@@ -8,6 +8,10 @@ body {
     height: 100%;
 }
 
+ol[role="list"] {
+    display: none;
+}
+
 .story {
     display: grid;
     grid-template-columns: 400px 1fr;
@@ -55,7 +59,7 @@ body {
         .loader {
             display: none;
             position: absolute;
-            background: rgba(0,0,0,0.5);
+            background: rgba(0, 0, 0, 0.5);
             width: 100%;
             height: 100%;
             justify-content: center;
@@ -70,8 +74,43 @@ body {
 
         img {
             object-fit: cover;
-            height:100%;
-            width:100%;
+            height: 100%;
+            width: 100%;
+        }
+    }
+}
+
+.stories {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(auto-fit, 128px);
+    align-items: center;
+    column-gap: 24px;
+
+    &-card {
+        h1 {
+            text-align: center;
+            margin-top: 8px;
+            font-family: 'Comfortaa', sans-serif;
+            font-size: 16px;
+        }
+
+        img {
+            border-radius: 16px;
+        }
+
+        &-add {
+            border: 2px solid rgba(0, 0, 0, 0.2);
+            border-radius: 16px;
+            height: 128px;
+            width: 128px;
+            align-self: start;
+            color: rgba(0, 0, 0, 0.4);
+
+            &:hover {
+                border-color: rgba(0, 0, 0, 0.4);
+                color: rgba(0, 0, 0, 0.6);
+            }
         }
     }
 }

@@ -83,7 +83,7 @@ class StoryViewer extends Component
 
     public function finish()
     {
-        $this->redirect(route('dashboard'));
+        $this->redirect(route('stories.index'));
     }
 
     public function render()

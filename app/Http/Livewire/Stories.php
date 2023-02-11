@@ -1,23 +1,17 @@
 <?php
 
-namespace Database\Seeders;
+namespace App\Http\Livewire;
 
-use App\Models\User;
-use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Auth;
+use Livewire\Component;
 
-class StorySeeder extends Seeder
+class Stories extends Component
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
+    public function new()
     {
-        User::find(1)->stories()->create([
-            'user_id' => 1,
+        Auth::user()->stories()->create([
             'thumbnail' => 'https://uce9405c67243a4b45031faf8719.previews.dropboxusercontent.com/p/thumb/ABxT1T9Dyhv2E_THMYKHboKgACG_GpDGA92nOQH3H5dpY5nkog8w2Om9Z_Fi87Cg6kr6eegBSZMQCgzbs_MbzV1of-vw_DKYI0ooB4RWp2I2jJt1Qu9KIQRQTIYMPYxIPZlrBiVXKTGlWaNegbGVtjyse-iWrvU1LjTakdBFMmVXW0I23M9l8afhmM7V-FE_trZyCwttuE2OmoScIN5JHAYZ3AOgEaIFAOCx4kwbnXJ2u2gnWAZ309vL2YwZzVxsww-Kh6ohzIYoFkxkcYAPdG32sI_YlNXB5iuT5nE54LpCoeB7UxLgfWPtGkIBsk6IzNPn0f8vAEPjzDN9feOwbkNfzgRhgeZKxjUjAhQQIdxMWBpXoD3GunuPrBQ_HFi_eu8/p.png',
-            'prompt' => 'This is a prompt',
+            'prompt' => 'A day on a train',
             'beats' => [
                 [
                     'paragraph' => 'The train ride was long and tiring, but the excitement of James and his brother Luke was palpable. James couldn’t wait to explore the new world outside the window. Click-clack, click-clack, went the wheels of the train. He stuck his head out and felt the wind on his face. “Weeeee!” he shouted. His brother Luke just smiled and shook his head.',
@@ -37,5 +31,12 @@ class StorySeeder extends Seeder
                 ]
             ],
         ]);
+
+        $this->redirect(route('stories.index'));
+    }
+
+    public function render()
+    {
+        return view('livewire.stories');
     }
 }
