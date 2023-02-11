@@ -53,7 +53,7 @@ ol[role="list"] {
 
     .image {
         overflow: hidden;
-        margin: 32px;
+        margin: 24px;
         position: relative;
 
         .loader {
@@ -74,6 +74,14 @@ ol[role="list"] {
 
         img {
             object-fit: cover;
+            height: 100%;
+            width: 100%;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
             height: 100%;
             width: 100%;
         }
