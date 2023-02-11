@@ -24,8 +24,11 @@ ol[role="list"] {
     display: grid;
     justify-content: center;
     align-content: center;
-    height: 100vh;
     padding: 1rem;
+
+    @include media-query('tablet') {
+        height: 100vh;
+    }
 
     .story-inner-wrapper {
         padding: 1rem;
@@ -42,7 +45,7 @@ ol[role="list"] {
             grid-gap: 2rem;
             max-width: 1148px;
             margin: none;
-     }
+        }
     }
 
     &-loader {
