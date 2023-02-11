@@ -1,6 +1,6 @@
 <div class="story">
     <div class="sidebar text-purple-900">
-        <div class="content pt-12">
+        <div class="content">
             @foreach (\Illuminate\Support\Str::of($currentBeat['paragraph'])->explode('.')->filter() as $sentence)
                 <div class="pb-4">
                     {{ $sentence }}.

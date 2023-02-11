@@ -1,0 +1,100 @@
+/**
+ * SPACING
+ */
+$space-base: 8px;
+
+@function spacing($multiplier: 1, $correction: 0) {
+    @return $space-base * $multiplier + $correction;
+}
+
+$body-spacing-x: spacing(2);
+$body-spacing-y: spacing(5);
+$radius-small: 6px;
+$radius-medium: 8px;
+$radius-large: 12px;
+
+/**
+ * FONTS
+ */
+
+@function px-to-em($pixelsize) {
+    @return $pixelsize / 16 * 1em;
+}
+
+/**
+ * BREAKPOINTS
+ */
+$screen-desktop-wide: 2048px;
+$breakpoint-desktop-wide: '(min-width: #{$screen-desktop-wide + 1px})';
+$screen-desktop: 1280px;
+$breakpoint-desktop: '(min-width: #{$screen-desktop + 1px})';
+$screen-laptop: 1024px;
+$breakpoint-laptop: '(min-width: #{$screen-laptop + 1px})';
+$screen-tablet: 768px;
+$breakpoint-tablet: '(min-width: #{$screen-tablet + 1px})';
+$screen-mobile: 640px;
+$breakpoint-mobile: '(min-width: #{$screen-mobile + 1px})';
+$screen-mobile-narrow: 480px;
+$breakpoint-mobile-narrow: '(min-width: #{$screen-mobile-narrow + 1px})';
+
+@mixin media-query($breakpoint) {
+    @if ($breakpoint == desktop-wide) {
+        @media #{$breakpoint-desktop-wide} {
+            @content;
+        }
+    }
+
+    @else if ($breakpoint == desktop) {
+        @media #{$breakpoint-desktop} {
+            @content;
+        }
+    }
+    @else if ($breakpoint == laptop) {
+        @media #{$breakpoint-laptop} {
+            @content;
+        }
+    }
+    @else if ($breakpoint == tablet) {
+        @media #{$breakpoint-tablet} {
+            @content;
+        }
+    }
+    @else if ($breakpoint == mobile) {
+        @media #{$breakpoint-mobile} {
+            @content;
+        }
+    }
+    @else if ($breakpoint == mobile-narrow) {
+        @media #{$breakpoint-mobile-narrow} {
+            @content;
+        }
+    }
+    @else {
+        @media (max-width: #{$breakpoint}) {
+            @content;
+        }
+    }
+}
+@mixin truncate {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/**
+ * Z-INDEX
+ */
+$z-index: (
+    front : 1301,
+    navigation: 3,
+    middle : 2,
+    back : 1,
+);
+
+@function z-index($key) {
+    @return map-get($z-index, $key);
+}
+
+@mixin z-index($key) {
+    z-index: z-index($key);
+}
