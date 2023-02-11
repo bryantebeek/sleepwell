@@ -48,7 +48,6 @@ ol[role="list"] {
         @include media-query('tablet') {
             order: 0;
             padding: spacing(4) spacing(2) spacing(2);
-            width: 400px;
         }
 
         .content {
@@ -94,10 +93,11 @@ ol[role="list"] {
         order: 0;
         aspect-ratio: 1;
 
+        max-width: 400px;
+
         @include media-query('tablet') {
             order: 1;
             max-width: none;
-            justify-self: end;
         }
 
         .loader {
@@ -117,7 +117,7 @@ ol[role="list"] {
         }
 
         img {
-            max-height: 800px;
+            width: 100%;
         }
 
         .overlay {
