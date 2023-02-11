@@ -1,7 +1,9 @@
 <div class="stories">
-    <button class="stories-card stories-card-add" wire:click="new">
-        +
-    </button>
+    @if (Auth::check())
+        <button class="stories-card stories-card-add" wire:click="new" wire:loading.attr="disabled">
+            +
+        </button>
+    @endif
 
     @foreach ($stories as $story)
         <a href="{{ route('stories.view', $story) }}" class="stories-card">
